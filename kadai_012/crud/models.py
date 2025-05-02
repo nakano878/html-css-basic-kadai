@@ -3,14 +3,6 @@ from django.urls import reverse
 
 class Category(models.Model):
     name = models.CharField(max_length=200)
-    myText = models.TextField(
-        verbose_name='',
-        blank=True,
-        null=True,
-        max_length=1000,
-    )
-
-
     def __str__(self):
         return self.name
 
@@ -20,6 +12,11 @@ class Product(models.Model):
     price = models.PositiveIntegerField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     img = models.ImageField(blank=True, default='noImage.png')
+
+    description = models.TextField(
+        blank=True,
+        null=True, 
+    )
 
     def __str__(self):
         return self.name
